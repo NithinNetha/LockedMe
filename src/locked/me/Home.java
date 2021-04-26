@@ -21,7 +21,7 @@ public class Home {
         folder_name = new File(DIRECTORY+"/files");
         if (!folder_name.exists())
             folder_name.mkdirs();
-        System.out.println("DIRECTORY : "+ folder_name.getAbsolutePath());
+        System.out.println("\nDIRECTORY : "+ folder_name.getAbsolutePath());
     }
 	
 	
@@ -61,20 +61,26 @@ public class Home {
 					System.exit(0);//exit from application
 				}
 			}catch(NumberFormatException e) {
-				System.out.println("\nWrong entry..Enter correct choice");}
+				System.out.println("\n***Wrong entry..Enter correct choice***");}
 		}while(ch!=3);
 		System.out.println("Thank you");
 	} //closing of mainMenu();
+	
+	
+	
+	
 	private void displayList(List<String> list) {
 		if (list.isEmpty() == true)
             System.out.println("***There are no files to display***");
 		else {
-			System.out.println("Files currently in directory");
+			System.out.println("***Files currently in directory***");
 			for(String i:list)
 				System.out.println(" "+i);
 		}
 		
 	}
+	
+	
 	public void subMenu(){
 		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
 		int option = 0;
@@ -86,23 +92,33 @@ public class Home {
 	          switch(option) {
 	          case 1:{
 	        	  System.out.print("Enter file name to create: "); //ask for file name.
-				String filecreate=reader.readLine(); //reads file name.
-				addFile(filecreate); //AddFile() method is called. 
-				list=makeList();
-	          }
-	          case 2:
-	            	break;
+	        	  String filecreate=reader.readLine(); //reads file name.
+	        	  addFile(filecreate); //AddFile() method is called. 
+	        	  list=makeList();
+	          		break;
+	          	}
+	          case 2:{
+	        	  System.out.print("Enter file name to Delete: ");
+	        	  String filedel=reader.readLine();
+	        	  deleteFile(filedel);
+	        	  list=makeList();
+	        	  break;
+	        	}
 	          case 3:
 	            	break;
 	          case 4:
-	        	  System.out.println("Going Back to MAIN menu");
+	        	  System.out.println("***Going Back to MAIN menu***");
 	        	  mainMenu();
 	        	  break;
 	          }
 		}catch (Exception e){
-	            System.out.println("Please enter 1, 2, 3 or 4");}
+	            System.out.println("***Please enter 1, 2, 3 or 4***");}
 		}while(option!=4);
 	} //Closing of SubMenu(); Function.
+	
+	
+	
+	
 	
 	public void addFile(String name) {  //AddFile definition with name of file
 		File aFile=new File(folder_name +"/"+name); //initializing File class
@@ -123,13 +139,26 @@ public class Home {
 			}  
 			else  
 			{  
-				System.out.println("File already exist at location: ");  
+				System.out.println("***File already exist at location****");  
 			}  
 		}catch (IOException e){ e.printStackTrace();}
 		}
 		else
-			System.out.println("Entered name is not a proper format");
+			System.out.println("****Entered name is not a proper format****");
 	} //Closing of addfile() function.
+	
+	
+	
+	
+	public void deleteFile(String filedel) {
+		String name=filedel;
+		File dFile =new File(folder_name +"/"+name);
+		if (dFile.delete()) { 
+		      System.out.println("Deleted the file: " + dFile.getName());
+		    } else {
+		      System.out.println("***File doesn't exist****");
+		    } 
+	}
 	
 	public List<String> makeList() {
 		File dir = new File(folder_name +"/"+"."); //giving folder directory
@@ -142,6 +171,10 @@ public class Home {
 		));
 		return names;
 	}//closing of makeList();
+	
+	
+	
+	
 	
 	//demonstrating Selection sort
 	public void sortList(List<String> list) { 
@@ -163,5 +196,6 @@ public class Home {
 	        }
 	    }
 	}
+	
 		
 }
