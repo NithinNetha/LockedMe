@@ -1,8 +1,11 @@
 package locked.me;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
-
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class Home {
 
 	public static void main(String[] args) throws IOException {
@@ -12,15 +15,15 @@ public class Home {
 		Home menu=new Home();
 		menu.mainMenu();
 	}
-	public void mainMenu(){
-		Scanner s=new Scanner(System.in);
+	public void mainMenu() throws IOException{
+		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
 		int ch=0;
 		do {
 			try {
 				//Display option to user for choosing.
 				System.out.println("\nSelect the following from options");
 				System.out.println("\t1.Display list of Files\n\t2.Operations\n\t3.Exit");
-				ch=s.nextInt(); //Takes input for option.
+				ch=Integer.parseInt(reader.readLine()); //Takes input for option.
 				//prints when wrong option selected.
 				if(ch>3)
 					System.out.println("***Entered option is invalid***\n"); 
@@ -40,32 +43,57 @@ public class Home {
 		System.out.println("Thank you");
 	}
 	public void SubMenu(){
-		Scanner s=new Scanner(System.in);
-		System.out.println("Choose from below option");
-		System.out.println("\ta.Add file\n\tb.Delete File\n\tc.Search File\n\td.Return to Main Menu");
-		char option = 0;
+		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
+		int option = 0;
 		do{
+			System.out.println("Choose from below option");
+			System.out.println("\ta.Add file\n\tb.Delete File\n\tc.Search File\n\td.Return to Main Menu");
 			try {
-			char[] input = s.nextLine().toLowerCase().trim().toCharArray();
-	          option = input[0];
+			option=Integer.parseInt(reader.readLine()); //Takes input for option.
 	          switch(option) {
-	          case 'a':
-	        	  break;
-	          case 'b':
+	          case 1:{
+	        	  System.out.print("Enter file name to create: "); //ask for file name.
+				String filecreate=reader.readLine(); //reads file name.
+				AddFile(filecreate); //AddFile() method is called.  
+	          }
+	          case 2:
 	            	break;
-	          case 'c':
+	          case 3:
 	            	break;
-	          case 'd':
+	          case 4:
 	        	  System.out.println("Going Back to MAIN menu");
 	        	  mainMenu();
 	        	  break;
-	          default:{
-	            	System.out.println("Please enter a, b, c or d def");
-	            	SubMenu();}
 	          }
 		}catch (Exception e){
-	            System.out.println("Please enter a, b, c or d");}
-		}while(option!='d');
+	            System.out.println("Please enter 1, 2, 3 or 4");}
+		}while(option!=4);
 	}
+	public void AddFile(String name) {  //AddFile definition with name of file
+		File aFile=new File(name); //initializing File class
+		boolean result;
+		if(name.matches("\\S+\\.(.*)")==true) //check if file name is in proper format
+		{
+			
+		try
+		{  
+			result = aFile.createNewFile();  //creates a new file  
+			if(result)      // test if successfully created a new file  
+			{  
+				System.out.print("file created at "); //returns the path string  
+				String temp=aFile.getCanonicalPath();
+				Path path=Paths.get(temp);
+				path = path.getParent();
+				System.out.println(path);
+			}  
+			else  
+			{  
+				System.out.println("File already exist at location: ");  
+			}  
+		}catch (IOException e){ e.printStackTrace();}
+		}
+		else
+			System.out.println("Entered name is not a proper format");
+		}
 		
 }
