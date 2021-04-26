@@ -1,0 +1,2 @@
+module locked.me {
+}
