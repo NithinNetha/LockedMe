@@ -37,6 +37,7 @@ public class Home {
 	
 	public void mainMenu() throws IOException{
 		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
+		list=makeList();
 		int ch=0;
 		do {
 			try {
@@ -104,8 +105,10 @@ public class Home {
 	        	  list=makeList();
 	        	  break;
 	        	}
-	          case 3:
+	          case 3:{
+	            	fileSearch(list);
 	            	break;
+	            }
 	          case 4:
 	        	  System.out.println("***Going Back to MAIN menu***");
 	        	  mainMenu();
@@ -131,11 +134,8 @@ public class Home {
 			result = aFile.createNewFile();  //creates a new file  
 			if(result)      // test if successfully created a new file  
 			{  
-				System.out.print("file created at "); //returns the path string  
-				String temp=aFile.getCanonicalPath();
-				Path path=Paths.get(temp);
-				path = path.getParent();
-				System.out.println(path);
+				System.out.print(name+" file created at "); //returns the path string  
+				System.out.println(folder_name.getAbsolutePath());
 			}  
 			else  
 			{  
@@ -195,6 +195,40 @@ public class Home {
 	            list.set(smallestIndex, head);
 	        }
 	    }
+	}
+	
+	/*Search using Naive Search Algorithm technique*/
+	public void fileSearch(List<String> list) throws IOException { //Searching using Naive Pattern Searching
+		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
+		try {
+			System.out.print("Enter file name to search: ");
+			String ser=reader.readLine();
+			int flag=0;
+			String name=ser.toUpperCase();
+			for(String txt:list)
+				{
+				txt=txt.toUpperCase();
+					int M=name.length();
+					int N=txt.length();
+					/* A loop to slide pat one by one */
+					for (int i = 0; i <= N - M; i++) {
+						int j;	  
+						/* For current index i, check for pattern match */
+						for (j = 0; j < M; j++)
+							if (txt.charAt(i + j) != name.charAt(j))
+								break;
+						// checks for is it only filename or fileName without extension 
+						if ((j == M) && ((name.charAt(M-1)==txt.charAt(N-1)) || (txt.charAt(j)=='.'))) 
+						{ 
+							System.out.println("\tFound "+txt); 
+							flag++;
+						}
+					}
+		
+				}
+			if(flag==0)
+				System.out.println("***File not found***");
+		}catch(NumberFormatException e) {System.out.println("***Enter options in integer format****");}
 	}
 	
 		
