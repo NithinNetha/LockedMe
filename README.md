@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>LockedMe.com</h1>
-    <hr>
+    <br>
     <h2>Table of contents</h2> 
     <ul>
         <li><a href="#Links">Usefull Links</a></li>
@@ -20,21 +20,23 @@
         <li><a href="#CoreConcepts">Core Concepts in project</a></li>
         <li><a href="#Conclusion">Conclusion</a></li>
     </ul>
-    <hr>
+    <br>
     <h2><a id="Links">Usefull Links</a></h2>
         <h3>Link for java program to execute application:</h3>
             <a href="https://github.com/NithinNetha/LockedMe/blob/master/src/locked/me/Home.java"> Click here to view Home.java file</a>
             <p>code can also be be found in "src/locked/me/Home.java" path from above commited folders</p>
-        <h3>Document with screen shots and explaination:</h3>
+        <h3>Document with screenshots and explaination:</h3>
             <a href="https://docs.google.com/document/d/15lCVm73rMM3oL6fB-4XV1uJR5QgzdLLYsclsdxtg608/edit?usp=sharing"> Click here to view Document with screenshots</a>
-            <p>I tried to cover almost all operations including outputs for invalid inputs<p/>
-    <hr>
+            <p>I tried to cover almost all operations including outputs for invalid inputs</p>
+        <h3>Link for java program to execute application:</h3>
+            <a href="https://docs.google.com/document/d/16-nhgr46itrNFnkfGqUCzIDGT3XyIzjy_srjbxOdzMg/edit?usp=sharing"> Click here to view Project Documentation</a>
+    <br>
     <h2><a id="Intro">Project Introduction</a></h2>
         <p>This is simple File Handling project which mainly deals with file names rather than file content.</p>
-    <hr>
+    <br>
     <h2><a id="DevDetails">Developer Details</a></h2>
         <p>Project developed by <strong>Palarapu Nithin Kumar</strong> (email_Id : nithin6425@gmail.com) for Phase-1 Assessment</p>
-    <hr>
+    <br>
     <h2><a id="Sprints">Sprints planned</a></h2>
         <p>Sprints are planned and updated using <strong>Trello</strong>, click on link given below </p>
         <a href="https://trello.com/b/BcstVBK5/agile-sprint-board" target="_blank">https://trello.com/b/BcstVBK5/agile-sprint-board</a>
@@ -49,16 +51,16 @@
             <li>SearchFile();</li>
         </ul>
     <p>All the above sprints are visible in Trello in <strong>"Sprint - Complete" TaskCard</strong> and each individual Card will have comments for reference.</p>
-    <hr>
+    <br>
     <h2><a id="Flowchart">Flowchart</a></h2>
     <img style=" display: block; margin-left: auto;margin-right: auto; width: 70%;" src="https://embed.creately.com/IoPaXVdwWdB?type=svg" alt="image not loading https://embed.creately.com/IoPaXVdwWdB?type=svg try with this link">
-    <hr>
+    <br>
     <h2><a id="TechUsed">Technologies Used</a></h2>
         <ul>
             <li>Java</li>
             <li>Eclipse IDE</li>
         </ul>
-    <hr>
+    <br>
     <h2><a id="CoreConcepts">Core Concepts in project</a></h2>
     <p>Along  with basic concepts of Java like Output stmts, keyboard input, object, for loop, if statements and more, I also used:-</p>
     <ul style="list-style-type:none;">
@@ -71,7 +73,7 @@
             <li><p><strong>Selection Sort:</strong> to sort file names in ArrayList before displaying.</p></li>
             <li><p><strong>Naive String Search Algorithm:</strong> to search file names in ArrayList in way it can find and display files file names even user enters just name without extension.</p></li>
     </ul>
-    <hr>
+    <br>
     <h2><a id="Conclusion">Conclusion</a></h2>
          <p>This LockedMe.com application's unique points are:</p>
         <ul>
@@ -81,8 +83,6 @@
             <img src="https://github.com/NithinNetha/assess1/blob/master/searchtwo.JPG"></li>
         </ul>
         <p>Hence I conclude this application is designed in a way that user no need to worry about invalid inputs or abnormal termination.</p>
-    <h1>Thank you</h1>
-
-       
+    <h1>Thank you</h1>       
 </body>
 </html>
